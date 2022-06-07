@@ -28,3 +28,5 @@ function affine_scaling(c,A,b,x0; beta=0.5, epsilon=1e-9, max_iter=1000)
 
     return x1_traj, x2_traj
 end
+
+# Recefence: https://www.softcover.io/read/7b8eb7d0/juliabook2/interior#cid40
