@@ -1,0 +1,708 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Interior Point Methods - Interior Point Methods for Linear Problems</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#interior-point-methods-for-linear-problems" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Interior Point Methods for Linear Problems" class="md-header__button md-logo" aria-label="Interior Point Methods for Linear Problems" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Interior Point Methods for Linear Problems
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Interior Point Methods
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Interior Point Methods for Linear Problems" class="md-nav__button md-logo" aria-label="Interior Point Methods for Linear Problems" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Interior Point Methods for Linear Problems
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Interior Point Methods
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Interior Point Methods
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#affine-scaling-algorithm" class="md-nav__link">
+    Affine Scaling Algorithm
+  </a>
+  
+    <nav class="md-nav" aria-label="Affine Scaling Algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    Theory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    Implementation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primal-dual-path-following-algorithm" class="md-nav__link">
+    Primal-Dual Path Following Algorithm
+  </a>
+  
+    <nav class="md-nav" aria-label="Primal-Dual Path Following Algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-barrier-problem" class="md-nav__link">
+    The barrier problem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kkt-conditions" class="md-nav__link">
+    KKT Conditions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newtons-method-and-implementation" class="md-nav__link">
+    Newton's Method and Implementation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#affine-scaling-algorithm" class="md-nav__link">
+    Affine Scaling Algorithm
+  </a>
+  
+    <nav class="md-nav" aria-label="Affine Scaling Algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    Theory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    Implementation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primal-dual-path-following-algorithm" class="md-nav__link">
+    Primal-Dual Path Following Algorithm
+  </a>
+  
+    <nav class="md-nav" aria-label="Primal-Dual Path Following Algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-barrier-problem" class="md-nav__link">
+    The barrier problem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kkt-conditions" class="md-nav__link">
+    KKT Conditions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newtons-method-and-implementation" class="md-nav__link">
+    Newton's Method and Implementation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="interior-point-methods-for-linear-problems">Interior Point Methods For Linear Problems</h1>
+<p>In this text, we will present alternative methods for the Simplex algorithm for solving linear problems. While Dantzig's simplex searches for solutions in the border of the feasible region, the so-called Interior Point methods follows its iterations inside the feasible region.</p>
+<p>Introducing the notation, our primal linear program will be:</p>
+<div class="arithmatex">\[\begin{align*}
+&amp;\min_{x} c^T x\\
+\text{s. t. }&amp;Ax=b\\
+&amp;x\geq 0
+\end{align*}\]</div>
+<p>where <span class="arithmatex">\(A\)</span> is an <span class="arithmatex">\(m\times n\)</span> matrix, and its dual version:</p>
+<div class="arithmatex">\[\begin{align*}
+&amp;\max_{p} b^T p\\
+\text{s. t. }&amp;A^Tp\leq c\end{align*}\]</div>
+<p>We introduce two different algorithms, show the theory behind them, and compare their implementations in Julia.</p>
+<h2 id="affine-scaling-algorithm">Affine Scaling Algorithm</h2>
+<p>Affine Scaling is the most classical interior point algorithm. Instead of optimizing over the entire feasible region, we'll reduce the feasibility to an ellipsoid contained in it, then we can find an analytical solution, and iterate this whole process until we reach the optimal value within a tolerance that is calculated through the duality gap. The optimal value of an iteration is used as the center of the next feasible ellipsoid.</p>
+<h3 id="theory">Theory</h3>
+<p>Define the feasible region as <span class="arithmatex">\(F=\{x\in \mathbb{R}^n|Ax=b,x\geq0\}\)</span>, the subset of <span class="arithmatex">\(F\)</span> <span class="arithmatex">\(\{x\in F|x&gt;0\}\)</span> is called the set of interior points.</p>
+<p>Given <span class="arithmatex">\(y&gt;0\)</span> a feasible and interior solution, the following lemma establishes a feasible ellipsoid <span class="arithmatex">\(S\)</span> centered in <span class="arithmatex">\(y\)</span>.</p>
+<p><strong>Lemma 1:</strong> Let <span class="arithmatex">\(\beta\in(0,1)\)</span> and <span class="arithmatex">\(y&gt;0\)</span> and</p>
+<div class="arithmatex">\[S=\Big\{x\in\mathbb{R}^n\big|\sum_{i=1}^n\dfrac{(x_i-y_i)^2}{y_i^2}\leq\beta^2\Big\},\]</div>
+<p>then if <span class="arithmatex">\(x\in S\)</span> then <span class="arithmatex">\(x&gt;0\)</span>.</p>
+<p><strong>Proof:</strong> For a given <span class="arithmatex">\(x\in S\)</span>, we have for each <span class="arithmatex">\(x_i\)</span>:</p>
+<p><span class="arithmatex">\((x_i-y_i)^2\leq y_i^2\beta^2&lt;y_i^2\)</span>, and since <span class="arithmatex">\(y_i&gt;0\)</span> we can take the square root and get <span class="arithmatex">\(|x_i-y_i|&lt; y_i\)</span> which implies <span class="arithmatex">\(y_i-x_i&lt; y_i\)</span>, where we conclude <span class="arithmatex">\(x_i&gt;0\)</span>. <strong>Q.E.D</strong></p>
+<p>If we define <span class="arithmatex">\(Y=diag(y_1,\ldots,y_n)\)</span> i.e, a diagonal matrix where the i-th entry is <span class="arithmatex">\(y_i\)</span>, we can rewrite the ellipsoid inequation as:</p>
+<div class="arithmatex">\[||Y^{-1}(x-y)||\leq\beta\]</div>
+<p>We can now redefine the problem to minimize over <span class="arithmatex">\(S\)</span>:</p>
+<div class="arithmatex">\[\begin{align*}
+&amp;\min_{x} c^T x\\
+\text{s. t. }&amp;Ax=b\\
+&amp;||Y^{-1}(x-y)||\leq\beta
+\end{align*}\]</div>
+<p>Since <span class="arithmatex">\(y\)</span> is feasible, <span class="arithmatex">\(Ay=b\)</span>, and we can define a new variable <span class="arithmatex">\(d=x-y\)</span>, and modify the problem again:</p>
+<div class="arithmatex">\[\begin{align*}
+&amp;\min_{x} c^T d\\
+\text{s. t. }&amp;Ad=0\\
+&amp;||Y^{-1}d||\leq\beta
+\end{align*}\]</div>
+<p>The following lemma states an analytical solution for this problem guaranteeing that the optimal step <span class="arithmatex">\(d\)</span> keeps the point in the feasible set and the objective function is strictly minimized.</p>
+<p><strong>Lemma 2:</strong> Assume <span class="arithmatex">\(rank(A)=m\)</span> and that <span class="arithmatex">\(c\notin span(A)\)</span>. Given <span class="arithmatex">\(y&gt;0\)</span> the optimal solution of the above LP is:</p>
+<div class="arithmatex">\[d^*=-\beta\dfrac{Y^2(c-A^Tp)}{||Y(c-A^Tp)||},\]</div>
+<p>where </p>
+<div class="arithmatex">\[p=(AY^2A^T)^{-1}AY^2c.\]</div>
+<p>Furthermore, <span class="arithmatex">\(x = y +d^*\)</span> belongs to the feasible set <span class="arithmatex">\(F\)</span>, and </p>
+<div class="arithmatex">\[c^Tx&lt;c^Ty\]</div>
+<p><strong>Proof:</strong> The rank and span conditions in <span class="arithmatex">\(A\)</span> are linear algebra details to guarantee that <span class="arithmatex">\(AY^2A^T\)</span> is invertible and <span class="arithmatex">\(p\)</span> and <span class="arithmatex">\(d^*\)</span> are well-defined. Such details can be found in <a href="#References">[2]</a>, here we'll prove the feasibility and optimality of <span class="arithmatex">\(d^*\)</span> without worrying about this.</p>
+<p>To prove feasibility we need: <span class="arithmatex">\(Ad^*=0\)</span> and <span class="arithmatex">\(||Y^-1d^*||\leq\beta\)</span>, for the first, we just need to show that <span class="arithmatex">\(AY^2(c-A^Tp)=0:\)</span></p>
+<div class="arithmatex">\[\begin{align*}
+AY^2(c-A^Tp)&amp;=AY^2(c-A^T(AY^2A^T)^{-1}AY^2c)\\
+&amp;=AY^2(c-A^T(A^T)^{-1}Y^{-2}A^{-1}AY^2c)\\
+&amp;=AY^2(c-Y^{-2}Y^2c)\\
+&amp;=AY^2(c-Ic)\\
+&amp;=0
+\end{align*}\]</div>
+<p>Since <span class="arithmatex">\(Y^{-1}d^*=\beta\dfrac{Y(c-A^Tp)}{||Y(c-A^Tp)||}\)</span>, we can easily see that <span class="arithmatex">\(||Y^{-1}d^*||=\beta\)</span>, satisfying the constraint inequality.</p>
+<p>To prove optimatily, we take a feasible <span class="arithmatex">\(d\)</span>, i.e, <span class="arithmatex">\(Ad=0\)</span> and <span class="arithmatex">\(||Y^{-1}d||\leq\beta\)</span>. Using this and Schwarz inequality we can get:</p>
+<div class="arithmatex">\[\begin{align*}
+c^Td&amp;=(c^T-p^TA)d\\
+&amp;=(c^T-p^TA)YY^{-1}d\\
+&amp;=(c-A^Tp)^TYY^{-1}d\\
+&amp;\geq-||Y(c-A^Tp)||\cdot||Y^{-1}d||\\
+&amp;\geq-\beta||Y(c-A^Tp)||
+\end{align*}\]</div>
+<p>One can prove using the same strategy that <span class="arithmatex">\(c^Td^*=-\beta||Y(c-A^Tp)||\)</span>, proving that <span class="arithmatex">\(d^*\)</span> is optimal. Furthermore, the objective function is reduced:</p>
+<div class="arithmatex">\[\begin{align*}c^Tx&amp;=c^T(y+d^*)\\&amp;=c^Ty+c^Td^*\\&amp;=c^Ty-\beta||Y(c-A^Tp)||\\&amp;&lt;c^Ty\end{align*}\]</div>
+<p>The feasibility of <span class="arithmatex">\(x=y+d^*\)</span> follows from Lemma 1.</p>
+<p>The reference <a href="#References">2</a> also show that the <span class="arithmatex">\(p\)</span> from Lemma 2 is the dual feasible solution for <span class="arithmatex">\(y\)</span>. Then can write the duality gap as:</p>
+<div class="arithmatex">\[\begin{align*}
+c^Ty-b^Tp&amp;=c^Ty-(Ay)^Tp\\
+&amp;=c^Ty-y^TA^Tp\\
+&amp;=y^T(c-A^Tp)
+\end{align*}\]</div>
+<p>We define <span class="arithmatex">\(s=(c-A^Tp)\)</span> as the dual slackness. Such a simple formula for the gap as <span class="arithmatex">\(y^Ts\)</span> give us direct way for computing stopping conditions, using minimum tolerance <span class="arithmatex">\(\varepsilon\)</span> for this gap.</p>
+<p>The algorithm starts with a feasible solution <span class="arithmatex">\(x^{(0)}\)</span>, computes the optimal value inside the ellipsoid centered at <span class="arithmatex">\(x^{(0)}\)</span> using the above concepts, and uses this value as the center for the next ellipsoid until we reach the duality gap tolerance.</p>
+<h3 id="implementation">Implementation</h3>
+<p><strong>Inputs:</strong> </p>
+<ul>
+<li>the problem <span class="arithmatex">\((A,b,c)\)</span></li>
+<li>initial primal feasible value <span class="arithmatex">\(x^{(0)}&gt;0\)</span></li>
+<li>optimality tollerance <span class="arithmatex">\(\varepsilon\)</span></li>
+<li><span class="arithmatex">\(\beta\in(0,1)\)</span></li>
+</ul>
+<p><strong>1. (Initialization)</strong> Starts iteration k=0, with the initial solution</p>
+<p><strong>2. (Dual Slackness computation)</strong> Given <span class="arithmatex">\(x^{(k)}&gt;0\)</span>, sets</p>
+<div class="arithmatex">\[\begin{align*}X_k&amp;=diag(x^{(k)}_1,\ldots,x^{(k)}_n)\\
+p_k&amp;=(AX_k^2A^T)^{-1}AX_k^2c\\
+s_k&amp;=c-A^Tp_k\end{align*}\]</div>
+<p><strong>3. (Optimatily check)</strong> If <span class="arithmatex">\(s_k&gt;0\)</span> and <span class="arithmatex">\(s_k^Tx^{(k)}&lt;\varepsilon\)</span>, the stops the algorithm and outputs <span class="arithmatex">\(x^{(k)}\)</span> as the primal approximate optimal solution.</p>
+<p><strong>4. (Solution update)</strong> Set</p>
+<div class="arithmatex">\[x^{(k+1)}=x^{(k)}-\beta \dfrac{X^2_ks_k}{||X_ks_k||}\]</div>
+<p>An code implementation in Julia 1.7.3, can be found in the file <a href="https://github.com/reneroliveira/interior-point-methods/blob/main/affine_scaling.jl">affine_scalling.jl</a>, from the Reference <a href="#References">[1]</a>.</p>
+<h3 id="example">Example</h3>
+<p>We're going to use the following example (already in SEF):</p>
+<div class="arithmatex">\[A=\begin{bmatrix}1&amp;2&amp;1&amp;0\\2&amp;1&amp;0&amp;1\end{bmatrix},b=\begin{bmatrix}3\\3\end{bmatrix}\text{ and }c=\begin{bmatrix}-1\\-1\\0\\0\end{bmatrix}\]</div>
+<p>The initial condition will be the point <span class="arithmatex">\((0.5,0.03)\)</span>, and the corresponding vector with slackness is:</p>
+<div class="arithmatex">\[x^{(0)}=(0.5,0.03,2.44,1.97)\]</div>
+<p>We'll use the parameters <span class="arithmatex">\(\beta=0.5,\varepsilon=10^{-9}\)</span></p>
+<p>In Julia, we can use the function and plot the trajectories:</p>
+<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="n">LinearAlgebra</span>
+<span class="k">using</span> <span class="n">PyPlot</span>
+<span class="n">include</span><span class="p">(</span><span class="s">&quot;affine_scaling.jl&quot;</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">0</span> <span class="p">;</span>
+     <span class="mi">2</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+
+<span class="c"># Initial Starting Solution</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">2.44</span><span class="p">,</span> <span class="mf">1.97</span><span class="p">]</span>
+
+<span class="n">x1_traj</span><span class="p">,</span> <span class="n">x2_traj</span> <span class="o">=</span> <span class="n">affine_scaling</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span><span class="n">beta</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">epsilon</span> <span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">figure</span><span class="p">()</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x1_traj</span><span class="p">,</span> <span class="n">x2_traj</span><span class="p">,</span> <span class="s">&quot;o-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;Affine Scaling&quot;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&quot;upper right&quot;</span><span class="p">)</span>
+
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Optimal Solution:&quot;</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;(&quot;</span><span class="p">,</span><span class="n">x1_traj</span><span class="p">[</span><span class="k">end</span><span class="p">],</span><span class="s">&quot;,&quot;</span><span class="p">,</span><span class="n">x2_traj</span><span class="p">[</span><span class="k">end</span><span class="p">],</span><span class="s">&quot;)&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Optimal Solution:
+(0.9999998849647512,1.0000000877494506)
+</code></pre></div>
+<p><img alt="png" src="../interior-point-methods_files/interior-point-methods_4_1.png" /></p>
+<h2 id="primal-dual-path-following-algorithm">Primal-Dual Path Following Algorithm</h2>
+<p>The ideia behind this algorithm is to remove the positiveness constraint and modify the objective function so as to penalize variables that falls outside the feasible region. This penalization is controlled by a parameter <span class="arithmatex">\(\mu\)</span>, in such way that as <span class="arithmatex">\(\mu\to0\)</span> we get converge to the original problem. Using this, we solve the modified problem using KKT conditions equations (by Newton's method) and use the optimal value as an initial solution to the next iterarion using a smaller <span class="arithmatex">\(\mu\)</span>. That's the summary of the algorithm, details will be more clear in the next subsections.</p>
+<p>Consider the problem:</p>
+<div class="arithmatex">\[\begin{align*}
+&amp;\min_{x} c^T x\\
+\text{s. t. }&amp;Ax=b\\
+&amp;x\geq 0
+\end{align*}\]</div>
+<p>and its dual version with slackness <span class="arithmatex">\(s\)</span></p>
+<div class="arithmatex">\[\begin{align*}
+&amp;\max_{p} b^T p\\
+\text{s. t. }&amp;A^Tp+s= c\\
+&amp;~~~~~~~~~s\geq0\end{align*}\]</div>
+<h3 id="the-barrier-problem">The barrier problem</h3>
+<p>For a given <span class="arithmatex">\(\mu&gt;0\)</span> let's introduce the barrier function:</p>
+<div class="arithmatex">\[B_{\mu}(x)=c^Tx-\mu\sum_{j=1}^{n}\log x_j\]</div>
+<p>We can set <span class="arithmatex">\(B_{\mu}(x)=+\infty\)</span> if some <span class="arithmatex">\(x_j\leq 0\)</span></p>
+<p>The (primal) barrier problem is:</p>
+<div class="arithmatex">\[\begin{align*}
+&amp;\min_{x} B_{\mu}(x)\\
+\text{s. t. }&amp;Ax=b
+\end{align*}\]</div>
+<p>Although we removed the positiveness constraint, the new objective increases as the vector <span class="arithmatex">\(x\)</span> approaches the zero in some direction, i.e, we are rewarding the function if <span class="arithmatex">\(x\)</span> stays in the feasible region. If we take a big value of <span class="arithmatex">\(\mu\)</span>, the term <span class="arithmatex">\(c^Tx\)</span> is neglected and the optimal solution will be a feasible <span class="arithmatex">\(x\)</span> such that, the penalization <span class="arithmatex">\(-\mu\sum_{j=1}^{n}\log x_j\)</span> is minimized. Such <span class="arithmatex">\(x\)</span> value is called the "analytical center" of the feasible region. Oppositely, if <span class="arithmatex">\(\mu\)</span> approaches 0, and <span class="arithmatex">\(x(\mu)\)</span> is the optimal solution to the barrier problem, it can be shown that <span class="arithmatex">\(\lim_{\mu\to0}x(\mu)\)</span> exists and is an optimal solution for the original problem, intuitively, because the penalization term is small enough.</p>
+<p>Let <span class="arithmatex">\(\mu_0,\mu_1,\mu_2,\ldots\)</span> be a strictly decreasing sequence of positive values with <span class="arithmatex">\(\lim_{k\to\infty}\mu_k=0\)</span>, and <span class="arithmatex">\(x(\mu_k)\)</span> be the optimal solution for the barrier problem with objective  <span class="arithmatex">\(B_{\mu_k}(x)\)</span>. The sequence:</p>
+<div class="arithmatex">\[x(\mu_0),x(\mu_1),x(\mu_2)\ldots\]</div>
+<p>is called the <strong>central path</strong>, and converges to the optimal solution. That's tha path the algorithm will follow, but now we have a new problem: How do optimize <span class="arithmatex">\(B_{\mu}(x)\)</span>? </p>
+<h3 id="kkt-conditions">KKT Conditions</h3>
+<p>Previously we describe a barrier problem for the original primal problem, we can do the same thing for the dual one:</p>
+<div class="arithmatex">\[\begin{align*}
+&amp;\max_{p} b^Tp+\mu\sum_{j=1}^n\log(x_j)\\
+\text{s. t. }&amp;A^Tp+s=c
+\end{align*}\]</div>
+<p>Let <span class="arithmatex">\(x(\mu)\)</span> be a feasible solution for the primal barrier problem and <span class="arithmatex">\(p(\mu),s(\mu)\)</span> feasible solutions for the dual barrier one. It can be shown <a href="#References">[2]</a> that, if <span class="arithmatex">\(x(\mu),p(\mu),s(\mu)\)</span> satiffies the below listed KKT (Karush–Kuhn–Tucker) conditions, they are optimal.</p>
+<div class="arithmatex">\[\begin{align*}
+Ax(\mu)b&amp;=0\\
+x(\mu)&amp;\geq0\\
+A^Tp(\mu)+s(\mu)&amp;=c\\
+s(\mu)&amp;\geq0\\
+x_js_j&amp;=\mu
+\end{align*}\]</div>
+<p>where the last condition holds for <span class="arithmatex">\(j=1,\ldots,n\)</span>, and can be rewrited as <span class="arithmatex">\(X(\mu)S(\mu)e=e\mu\)</span>, where <span class="arithmatex">\(X(\mu)=diag(x_1(\mu),\ldots,x_n(\mu))\)</span>, <span class="arithmatex">\(S(\mu)=diag(s_1(\mu),\ldots,s_n(\mu))\)</span>, and <span class="arithmatex">\(e\)</span> is a column vector of ones.</p>
+<p>Since KKT conditions garantees optimality for the <span class="arithmatex">\(\mu\)</span>-barrier problem, we can reduce our task of finding <span class="arithmatex">\(x(\mu),p(\mu),s(\mu)\)</span> to solving the KKT equations, but the last equation <span class="arithmatex">\(x_js_j\)</span> is nonlinear, which makes it difficult do solve directly, so we'll use Newton's method, an iterative algorithm for root fiding of nonlinear functions.</p>
+<h3 id="newtons-method-and-implementation">Newton's Method and Implementation</h3>
+<p>Let <span class="arithmatex">\(F:\mathbb{R}^n\to\mathbb{R}^n\)</span> be a map where we want to find <span class="arithmatex">\(z^*\)</span> such that <span class="arithmatex">\(F(z^*)=0\)</span>.</p>
+<p>Suppose we have an approximation of the solution <span class="arithmatex">\(z^k\)</span> and want to improve it. We can use the first order Taylor Expansion:</p>
+<div class="arithmatex">\[F(z^k+d)\approx F(z^k)+J(z^k)d,\]</div>
+<p>where <span class="arithmatex">\(J(z^k)\)</span> is the Jacobian, an <span class="arithmatex">\(n\times n\)</span> matrix which i-th row and j-th column is:</p>
+<div class="arithmatex">\[\dfrac{\partial F_i(z)}{\partial z_j}\Big|_{z=z^k}\]</div>
+<p>We're looking for some <span class="arithmatex">\(d\)</span> s.t <span class="arithmatex">\(F(z^k+d)=0\)</span>, but we can use the taylor approximation to solve the system:</p>
+<div class="arithmatex">\[F(z^k)+J(z^k)d\]</div>
+<p>Then we set <span class="arithmatex">\(z^{k+1}=z^{k}+d\)</span> and repeat the process until convergence.</p>
+<p>In our case of KKT equations, we have a vector <span class="arithmatex">\(z=(x,p,s)\)</span> and <span class="arithmatex">\(F(z)\)</span> given by the below <span class="arithmatex">\((2n+m)\)</span>-square-matrix:</p>
+<div class="arithmatex">\[F(z)=\begin{bmatrix}Ax-b\\A^Tp+s-c\\XSe-\mu e\end{bmatrix}\]</div>
+<p>Suppose we have a feasible vector <span class="arithmatex">\((x^k,p^k,s^k)\)</span>, to find Newton's direction <span class="arithmatex">\(d=(d_x^k,d_p^k,d_s^k)\)</span>, we can solve the system:</p>
+<div class="arithmatex">\[\begin{bmatrix}A &amp;\boldsymbol 0 &amp;\boldsymbol 0\\
+\boldsymbol 0&amp;A^T&amp; I\\
+S_k&amp;\boldsymbol0&amp;X_k\end{bmatrix}\begin{bmatrix}d_x^k\\d_p^k\\d_s^k\end{bmatrix}=-\begin{bmatrix}Ax^k-b\\A^Tp^k+s^k-c\\X_kS_k e-\mu^k e\end{bmatrix}\]</div>
+<p>Reference <a href="#References">[2]</a> shows the analytical solution for <span class="arithmatex">\(d\)</span> but this is enough for us now, since we'll use Julia Linear Algebra package to solve the system for us.</p>
+<p>Now we have the direction to update the solutions, we have to decide the step length.</p>
+<div class="arithmatex">\[\begin{align*}
+x^{k+1} &amp;= x^k+\beta_P^kd_x^k\\
+p^{k+1} &amp;= p^k+\beta_D^kd_p^k\\
+s^{k+1} &amp;= s^k+\beta_D^kd_s^k
+\end{align*}\]</div>
+<p>the lengths are choosen in order to preserve feasibility:</p>
+<div class="arithmatex">\[\begin{align*}
+\displaystyle \beta_P^k &amp;= \min\Big\{1,\alpha\cdot\min_{i|(d_x^k)_i&lt;0}\left(-\dfrac{x_i^k}{(d_x^k)_i}\right)\Big\}\\
+\displaystyle \beta_D^k &amp;= \min\Big\{1,\alpha\cdot\min_{i|(d_s^k)_i&lt;0}\left(-\dfrac{s_i^k}{(s_x^k)_i}\right)\Big\},
+\end{align*}\]</div>
+<p>where <span class="arithmatex">\(\alpha\in(0,1)\)</span>.</p>
+<p>If we proceed with Newton's iterations with a fixed <span class="arithmatex">\(\mu^k\)</span> we'll converge to a solution in the central path for the modified <span class="arithmatex">\(\mu_k\)</span>-barrier problem, but since we don't want such solutions, we decrease <span class="arithmatex">\(\mu^k\)</span> in each step, and use the previos Newton's solution as initial step for the new iteration with smaller <span class="arithmatex">\(\mu^k\)</span>. A good choice of <span class="arithmatex">\(\mu^k\)</span> is:</p>
+<div class="arithmatex">\[\mu^k=\rho_k\dfrac{(x^k)^Ts^k}n,\]</div>
+<p>where <span class="arithmatex">\(\rho_k\leq1\)</span>. In our program we fixed <span class="arithmatex">\(\rho_k=1/2\)</span> for all steps.</p>
+<p>The Julia Implementation can be found in <a href="https://github.com/reneroliveira/interior-point-methods/blob/main/primal_dual_path_following.jl">primal_dual_path_following.jl</a> file.</p>
+<h3 id="example_1">Example</h3>
+<p>We used the same example as before, but now using the Primal-Dual algorithm.</p>
+<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="n">PyPlot</span>
+<span class="n">include</span><span class="p">(</span><span class="s">&quot;primal_dual_path_following.jl&quot;</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">0</span> <span class="p">;</span>
+     <span class="mi">2</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+
+<span class="c"># Initial Starting Solution</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">2.44</span><span class="p">,</span> <span class="mf">1.97</span><span class="p">]</span>
+<span class="n">p0</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="p">;</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">x1_traj</span><span class="p">,</span> <span class="n">x2_traj</span> <span class="o">=</span> <span class="n">affine_scaling</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span><span class="n">beta</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">epsilon</span> <span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
+<span class="n">x1_traj_pd</span><span class="p">,</span> <span class="n">x2_traj_pd</span> <span class="o">=</span> <span class="n">primal_dual</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">p0</span><span class="p">;</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">figure</span><span class="p">()</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x1_traj</span><span class="p">,</span> <span class="n">x2_traj</span><span class="p">,</span> <span class="s">&quot;o-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;Affine Scaling&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x1_traj_pd</span><span class="p">,</span> <span class="n">x2_traj_pd</span><span class="p">,</span> <span class="s">&quot;*-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;Primal Dual Method&quot;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&quot;upper right&quot;</span><span class="p">);</span>
+
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Optimal Solution:&quot;</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;(&quot;</span><span class="p">,</span><span class="n">x1_traj_pd</span><span class="p">[</span><span class="k">end</span><span class="p">],</span><span class="s">&quot;,&quot;</span><span class="p">,</span><span class="n">x2_traj_pd</span><span class="p">[</span><span class="k">end</span><span class="p">],</span><span class="s">&quot;)&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Optimal Solution:
+(0.9999999998408018,0.9999999998408022)
+</code></pre></div>
+<p><img alt="png" src="../interior-point-methods_files/interior-point-methods_9_1.png" /></p>
+<h2 id="references">References</h2>
+<p>[1] Kwon, C. (2019). Julia Programming for Operations Research 2/e. Softcover.Io. https://www.softcover.io/read/7b8eb7d0/juliabook2/interior#cid40</p>
+<p>[2] Bertsimas, D., Tsitsiklis, J. N., &amp; Tsitsiklis, J. (1997). Introduction to Linear Optimization (Athena Scientific Series in Optimization and Neural Computation, 6) (1st ed.). Athena Scientific.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
