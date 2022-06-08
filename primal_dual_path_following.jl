@@ -1,4 +1,4 @@
-function primal_dual(c,A,b,x0,p0; beta=0.5, epsilon=1e-9, max_iter=1000,alpha=0.9)
+function primal_dual(c,A,b,x0,p0; epsilon=1e-9, max_iter=1000,alpha=0.9)
 
     # Preparing variables for the trajectories
     x1_traj = []
