@@ -9,19 +9,19 @@
       
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
     
     
       
-        <title>Interior Point Methods - Interior Point Methods for Linear Problems</title>
+        <title>Interior Point Methods for Linear Problems</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.a57b2b03.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
         
       
     
@@ -53,7 +53,7 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
   
     
-    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -74,7 +74,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Interior Point Methods for Linear Problems" class="md-header__button md-logo" aria-label="Interior Point Methods for Linear Problems" data-md-component="logo">
+    <a href="." title="Interior Point Methods for Linear Problems" class="md-header__button md-logo" aria-label="Interior Point Methods for Linear Problems" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -93,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Interior Point Methods
+              Interior Point Methods For Linear Problems
             
           </span>
         </div>
@@ -161,7 +161,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Interior Point Methods for Linear Problems" class="md-nav__button md-logo" aria-label="Interior Point Methods for Linear Problems" data-md-component="logo">
+    <a href="." title="Interior Point Methods for Linear Problems" class="md-nav__button md-logo" aria-label="Interior Point Methods for Linear Problems" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -190,12 +190,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Interior Point Methods
+          Interior Point Methods For Linear Problems
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Interior Point Methods
+      <a href="." class="md-nav__link md-nav__link--active">
+        Interior Point Methods For Linear Problems
       </a>
       
         
@@ -547,7 +547,7 @@ s_k&amp;=c-A^Tp_k\end{align*}\]</div>
 <div class="highlight"><pre><span></span><code>Optimal Solution:
 (0.9999998849647512,1.0000000877494506)
 </code></pre></div>
-<p><img alt="png" src="../interior-point-methods_files/interior-point-methods_4_1.png" /></p>
+<p><img alt="png" src="index_files/index_4_1.png" /></p>
 <h2 id="primal-dual-path-following-algorithm">Primal-Dual Path Following Algorithm</h2>
 <p>The ideia behind this algorithm is to remove the positiveness constraint and modify the objective function so as to penalize variables that falls outside the feasible region. This penalization is controlled by a parameter <span class="arithmatex">\(\mu\)</span>, in such way that as <span class="arithmatex">\(\mu\to0\)</span> we get converge to the original problem. Using this, we solve the modified problem using KKT conditions equations (by Newton's method) and use the optimal value as an initial solution to the next iterarion using a smaller <span class="arithmatex">\(\mu\)</span>. That's the summary of the algorithm, details will be more clear in the next subsections.</p>
 <p>Consider the problem:</p>
@@ -651,7 +651,7 @@ s^{k+1} &amp;= s^k+\beta_D^kd_s^k
 <div class="highlight"><pre><span></span><code>Optimal Solution:
 (0.9999999998408018,0.9999999998408022)
 </code></pre></div>
-<p><img alt="png" src="../interior-point-methods_files/interior-point-methods_9_1.png" /></p>
+<p><img alt="png" src="index_files/index_9_1.png" /></p>
 <h2 id="references">References</h2>
 <p>[1] Kwon, C. (2019). Julia Programming for Operations Research 2/e. Softcover.Io. https://www.softcover.io/read/7b8eb7d0/juliabook2/interior#cid40</p>
 <p>[2] Bertsimas, D., Tsitsiklis, J. N., &amp; Tsitsiklis, J. (1997). Introduction to Linear Optimization (Athena Scientific Series in Optimization and Neural Computation, 6) (1st ed.). Athena Scientific.</p>
@@ -692,12 +692,12 @@ s^{k+1} &amp;= s^k+\beta_D^kd_s^k
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
+      <script src="assets/javascripts/bundle.b1047164.min.js"></script>
       
-        <script src="../javascripts/mathjax.js"></script>
+        <script src="javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
