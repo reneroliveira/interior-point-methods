@@ -1,6 +1,4 @@
 site_name: Interior Point Methods for Linear Problems
-nav:
-- Interior Point Methods: interior-point-methods.md
 
 theme: material
 
